@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+    <a class="navbar-brand tituloLogo" href="#">
+      <img [src]="logo" alt="logo" width="150" height="50">
+      </a>
+  
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+  
+        <!--Aapartado de Productos-->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Productos
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/NProducto">Nuevo Producto</a>
+            <a class="dropdown-item" routerLink="/LProducto">Listado de Productos</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Mis Artesanias</a>
+          </div>
+        </li>
+  
+        <!--Conócenos-->
+        <li class="nav-item active">
+          <a class="nav-link" href="#" routerLink="/Contactanos">Conócenos </a>
+        </li>
+  
+        <!--Politicas-->
+        <li class="nav-item active">
+          <a class="nav-link" href="#" routerLink="/Politicas">Politicas </a>
+        </li>
+  
+        <!--Tipos de pagos-->
+        <li class="nav-item active">
+          <a class="nav-link" href="#" routerLink="/Pagos">Tipos de Pagos </a>
+        </li>
+  
+      </ul>
+    </div>
+  
+    <ul>
+    
+  
+    <form class="form-inline my-2 my-lg-0">
+      
+      <li class="nav-item active">
+      <a class="nav-link" (click)="Carrito($event)">
+        <i class="fas fa-cart-plus fa-2x"></i>Carrito
+      </a>
+    </li>
+  
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLink="/Login">INICIA SESION</a>
+      </li>
+      
+      <li class="nav-item active">
+          <a class="nav-link" routerLink="/Registrate">REGISTRATE</a>
+      </li>      
+    </form>      
+    </ul>
+  
+  
+  </nav>
+  
+  <hr>
+   

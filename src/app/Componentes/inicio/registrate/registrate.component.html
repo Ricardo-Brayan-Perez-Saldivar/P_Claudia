@@ -1,0 +1,152 @@
+<div class="row">
+    <div class="col-md-8 mx-auto mt-7">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="text-center">REGISTRATE</h1>
+                <form>
+
+                    <div class="form-group col-md-6">
+                        <label for="id">ID</label>
+                        <input type="text" class="form-control" name="id">
+                    </div>
+
+                    <div class="row">
+
+                        <div class="form-group col-md-6">
+                            <label for="email">CORREO ELECTRONICO</label>
+                            <input type="email" class="form-control" name="correo" #correo="ngModel"[(ngModel)]="usuario.email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">CONTRASEÑA</label>
+                            <input type="password" class="form-control" name="password" #correo="ngModel"[(ngModel)]="usuario.password">
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="nombre">NOMBRE(S) </label>
+                            <input type="text" class="form-control" name="nombre" #nombre="ngModel"[(ngModel)]="usuario.nombre">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ap">APELLIDO PATERNO</label>
+                            <input type="text" class="form-control" name="ap" #ap="ngModel"[(ngModel)]="usuario.ap">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="am">APELLIDO MATERNO</label>
+                            <input type="text" class="form-control" name="am" #am="ngModel"[(ngModel)]="usuario.am">
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="edad">EDAD</label>
+                            <input type="text" class="form-control" name="edad" #correo="ngModel"[(ngModel)]="usuario.edad">
+                        </div>
+                        <div class="form-group">
+                            <label for="sbnm">SOBRENOMBRE</label>
+                            <input type="text" class="form-control" name="sbnm" #sbnm="ngModel"[(ngModel)]="usuario.sbnm">
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="calle">CALLE</label>
+                            <input type="text" class="form-control" name="calle" #calle="ngModel"[(ngModel)]="usuario.calle">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="colonia">COLONIA</label>
+                            <input type="text" class="form-control" name="colonia" #colonia="ngModel"[(ngModel)]="usuario.colonia">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dm">DELEGACION/MUNICIPIO</label>
+                            <input type="text" class="form-control" name="dm" #dm="ngModel"[(ngModel)]="usuario.dm">
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pais">PAIS</label>
+                        <input type="text" class="form-control" name="pais" #pais="ngModel"[(ngModel)]="usuario.pais">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="foto">FOTO</label>
+                        <input type="text" class="form-control" name="foto" #foto="ngModel"[(ngModel)]="usuario.foto">
+                    </div>
+
+                    <button class="btn btn-success btn-block" (click)="altaUsuario()">
+                        Guardar
+                    </button>
+
+                    <button class="btn btn-success btn-block" (click)="editarUsuario()">
+                        Modificar
+                    </button>
+
+
+                    
+                </form>
+                <div class="form-group mt-3">
+                    <p>Ya tienes una cuenta, <a routerLink="/Login">Inicia Sesion</a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr><br>
+
+<div align="center">
+<table *ngIf="hayRegistros(); else sin">
+    <tr>
+        <td>ID</td>
+        <td>NOMBRE</td>
+        <td>APELLIDO_P</td>
+        <td>APELLIDO_M</td>
+        <td>EDAD</td>
+        <td>SEXO</td>
+        <td>FOTO</td>
+        <td>NICK NAME</td>
+        <td>EMAIL</td>
+        <td>CONTRASEÑA</td>
+        <td>CALLE</td>
+        <td>COLONIA</td>
+        <td>DELEGACION/MUNICIPIO</td>
+        <td>PAIS</td>
+    </tr>
+
+    <tr *ngFor="let usuario of usuarios">
+        <td>{{usuario.id}}</td>
+        <td>{{usuario.nombre}</td>
+        <td>{{usuario.ap}}</td>
+        <td>{{usuario.am}}</td>
+        <td>{{usuario.sexo}}</td>
+        <td>{{usuario.foto}}</td>
+        <td>{{usuario.sbnm}}</td>
+        <td>{{usuario.email}}</td>
+        <td>{{usuario.password}}</td>
+        <td>{{usuario.calle}}</td>
+        <td>{{usuario.colonia}}</td>
+        <td>{{usuario.dm}}</td>
+        <td>{{usuario.pais}}</td>
+        <td> <button (clicl)="seleccionarUsuario(usuario.id)">Seleccionar</button></td>
+        <td> <button (clicl)="bajaUsuario(usuario.id)">Eliminar</button></td>
+    </tr>
+</table>
+
+<ng-template #sin>
+    <p>No hay ningun usuario registrado.</p>
+</ng-template>
+
+</div>
