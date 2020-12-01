@@ -7,7 +7,7 @@
     $conexion = conexion();
 
     //Operacion eliminar
-    $eliminarU = "DELETE FROM USUARIO WHERE ID_U = $_GET[ID_U]";
+    $eliminarU= "DELETE FROM USUARIO WHERE ID_U=$_GET[ID_U]";
 
     //Se realiza la QUERY en la base de datos
     mysqli_query($conexion,$eliminarU);
@@ -15,11 +15,11 @@
     class Result{}
 
     //Se genera los datos de respuesta
-    $responde = new Result();
-    $responde ->resultado = "OK";
-    $responde ->mensaje = 'EL PRODUCTO SE ELIMINO EXITOSAMENTE';
+    $response = new Result();
+    $response->resultado = "OK";
+    $response->mensaje = 'EL USUARIO SE ELIMINO EXITOSAMENTE';
 
     header ('Content-Type: application/json');
 
-    echo json_encode($responde); //Se muestra el JSON generado
+    echo json_encode($response); //Se muestra el JSON generado
 ?>

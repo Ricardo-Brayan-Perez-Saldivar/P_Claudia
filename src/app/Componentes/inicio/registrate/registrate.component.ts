@@ -1,62 +1,82 @@
 import { Component, OnInit } from '@angular/core';
 
-
 //Importacion del servicio
 import { UsuariosService } from '../../../Servicios/Usuarios/usuarios.service';
-
 
 @Component({
   selector: 'app-registrate',
   templateUrl: './registrate.component.html',
-  styleUrls: ['./registrate.component.css'],
-  providers: [UsuariosService],
+  styleUrls: ['./registrate.component.css']
 })
 export class RegistrateComponent implements OnInit {
 
   usuarios = null;
 
-  usuario = ({
-    id: [''],
-    nombre: [''],
-    ap: [''],
-    am: [''],
-    edad: [''],
-    sexo: [''],
-    foto: [''],
-    sbnm: [''],
-    email: [''],
-    password: [''],
-    calle: [''],
-    colonia: [''],
-    dm: [''],
-    pais: ['']
-  });
+  usuario = {
+    ID_U: null,
+    NOM_U: null,
+    AP_P: null,
+    AP_M: null,
+    EDAD: null,
+    SEXO: null,
+    FOTO: null,
+    SOBRENOMBRE: null,
+    EMAIL: null,
+    CONTRASENA: null,
+    ID_CALLE1: null,
+    ID_COL1: null,
+    ID_DM1: null,
+    ID_PA1: null};
 
   constructor(private servicioUsuario: UsuariosService) { }
 
   ngOnInit() {
-    this.obtenerUsuario();
+    this.obtenerUsuario();    
+    
+  }
+
+  resetear(){
+    this.usuario = {
+      ID_U: '',
+      NOM_U: '',
+      AP_P: '',
+      AP_M: '',
+      EDAD: '',
+      SEXO: '',
+      FOTO: '',
+      SOBRENOMBRE: '',
+      EMAIL: '',
+      CONTRASENA: '',
+      ID_CALLE1: '',
+      ID_COL1: '',
+      ID_DM1: '',
+      ID_PA1: ''};
   }
 
   obtenerUsuario() {
-    this.servicioUsuario.obtenerUsuarios().subscribe(
-      result => this.usuarios = result
-    );
+    this.servicioUsuario.obtenerUsuarios().subscribe( 
+      result => this.usuarios = result 
+      );
+
+    console.log(this.usuarios);
+    console.log(this.usuario);
   }
 
   altaUsuario() {
-    this.servicioUsuario.AltaUsuarios(this.usuario).subscribe(
+    this.servicioUsuario.altaUsuario(this.usuario).subscribe(
       datos => {
-        if (datos['resultado'] == 'OK') {
-          alert((datos['mensaje']));
+        if(datos['resultado'] == 'OK') {
+          alert(datos['mensaje']);
           this.obtenerUsuario();
+          this.resetear();
         }
       }
     );
+    
   }
   
-  bajaUsuario(idUsuario){
-    this.servicioUsuario.BajaUsuario(idUsuario).subscribe(
+  bajaUsuario(ID_U){
+    this.servicioUsuario.BajaUsuario(ID_U).subscribe(
       datos => {
         if(datos['resultado'] == 'OK'){
           alert(datos['mensaje']);
@@ -69,7 +89,7 @@ export class RegistrateComponent implements OnInit {
   editarUsuario(){
     this.servicioUsuario.EditaUsuario(this.usuario).subscribe(
       datos => {
-        if(datos['resultado'] == 'OK'){
+        if(datos['resultado']=='OK'){
           alert(datos['mensaje']);
           this.obtenerUsuario();
         }
@@ -77,8 +97,8 @@ export class RegistrateComponent implements OnInit {
     );
   }
 
-  seleccionarUsuario(idUsuario){
-    this.servicioUsuario.seleccionUsuario(idUsuario).subscribe(
+  seleccionarUsuario(ID_U){
+    this.servicioUsuario.seleccionUsuario(ID_U).subscribe(
       result => this.usuario = result[0]
     );
   }

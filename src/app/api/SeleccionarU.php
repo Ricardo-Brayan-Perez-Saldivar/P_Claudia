@@ -7,13 +7,14 @@
     $conexion = conexion();  //Se crea la conexion
 
     //Se realiza la consulta
-    $seleccionarU = "SELECT * FROM USUARIO WHERE ID_U = $_GET[ID_U]";
+    $seleccionarU = "SELECT * FROM USUARIO
+    WHERE ID_U=$_GET[ID_U]";
 
     //Se realiza la QUERY a la base de datos
     $registro = mysqli_query($conexion, $seleccionarU);
 
     //Se recorre el resultado y se guarda en un array
-    while ($resultado = mysqli_fetch_array($registro)){
+    if($resultado = mysqli_fetch_array($registro)){
         $datos[] = $resultado;
     }
 

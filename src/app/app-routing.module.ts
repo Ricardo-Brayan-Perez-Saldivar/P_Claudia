@@ -11,7 +11,7 @@ import { ProductoListaComponent } from './Componentes/Productos/producto-lista/p
 import { ProductoComponent } from './Componentes/Productos/producto/producto.component';
 
 const routes: Routes = [
-    //{path:'',component:InicioComponent,pathMatch:'full'},
+    {path:'',component:InicioComponent,pathMatch:'full'},
     {path: 'NProducto', component:ProductoComponent},
     {path: 'LProducto', component: ProductoListaComponent},
     {path: 'Contactanos', component: ContactanosComponent},
