@@ -9,6 +9,17 @@
     require("conexion.php");  //Se importa el archivo con la conexion
 
     $conexion = conexion();  //Se crea la conexion
+    //apartado donde se crea la ruta de la imagen
+    $nombreArchivo = $params->FOTO;
+    $archivo = $params->base64textString;
+    $archivo = base64_decode($archivo);
+
+    //ruta a la cual se ba a guardar la imagen
+    $filePath = $_SERVER['DOCUMENT_ROOT']."/P_Claudia/src/assets/Image/".$nombreArchivo;
+    //ruta que se mostrara
+    $path = "assets/Image/".$nombreArchivo;
+    //Movimiento de imagena la carpeta
+    file_put_contents($filePath, $archivo);
 
     //Operacion de Actualizar
     $EditarU = "UPDATE USUARIO SET NOM_U='$params->NOM_U', 
@@ -16,7 +27,7 @@
                                     AP_M='$params->AP_M',
                                     EDAD=$params->EDAD,
                                     SEXO='$params->SEXO',
-                                    FOTO='$params->FOTO',
+                                    FOTO='$path',
                                     SOBRENOMBRE='$params->SOBRENOMBRE', 
                                     EMAIL='$params->EMAIL',
                                     CONTRASENA='$params->CONTRASENA',

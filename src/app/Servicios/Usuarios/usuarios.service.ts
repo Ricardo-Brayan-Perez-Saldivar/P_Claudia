@@ -7,18 +7,21 @@ import {HttpClient} from '@angular/common/http';  //Permite comandos html
 })
 export class UsuariosService {
 
-  URL = "http://localhost/P_Claudia/src/app/api/"; //Variable mediante se realizara la conexion
-
+  URL = "http://localhost/P_Claudia/src/app/API_CARRITO/"; //Variable mediante se realizara la conexion
   constructor(private http: HttpClient) { }
 
-  obtenerUsuarios(){
+  /*obtenerUsuarios(){
     return this.http.get(`${this.URL}ObtenerUsuarios.php`);
-  }
+  }*/
 
   altaUsuario(usuario){
-    return this.http.post(`${this.URL}AltaUsuario.php`,JSON.stringify(usuario));
+    return this.http.post(`${this.URL}AltaUsuarioC.php`,JSON.stringify(usuario));
   }
 
+  altaDomicilio(domicilio){
+    return this.http.post(`${this.URL}AltaDomicilio.php`, JSON.stringify(domicilio));
+  }
+/*
   BajaUsuario(ID_U: number){
     return this.http.get(`${this.URL}BajaUsuario.php?ID_U=${ID_U}`);
   }
@@ -30,5 +33,9 @@ export class UsuariosService {
   EditaUsuario(usuario){
     return this.http.post(`${this.URL}EditarUsuario.php`,JSON.stringify(usuario));
   }
+
+  uploadFile(usuario) {
+    return this.http.post(`${this.URL}subirArchivo.php`, JSON.stringify(usuario));
+  }*/
 
 }

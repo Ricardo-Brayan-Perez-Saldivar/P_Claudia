@@ -1,12 +1,15 @@
 <?php
-
     //Permiten realizar una comprobacion a la conexion de la vase de datos
     header('Access-Control-Allow-Origin: *'); 
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+    
+    //Variables
+    $json = file_get_contents('php://input'); //Resibe el JSON de Angular
+    $params = json_decode($json); //Decodificar en JSON y lo guarda en esta variable
 
-    require("conexion.php"); //Importamos el archivo de la conexión
+    require("conexionC.php"); //Importa el archivo con la conexion
 
-    $conexion = conexion(); //Se crea la conexion
+    $conexion = conexion();  //Crear la conexion
 
     //Consulta a la base de datos
     /*$db_usuarios = "SELECT ID_U, NOM_U, AP_P, AP_M, 
@@ -14,11 +17,11 @@
      ID_CALLE1, ID_COL1, ID_DM1, ID_PA1 
      FROM USUARIO";*/
      //$db_Usuarios= "SELECT * FROM USUARIO";
-     $pa_usuarios = "CALL VER_USUARIOS()";
+     $ver_Productos = "CALL VER_PRODUCTOS()";
 
     //Realiza la query a la DB
     //$registros = mysqli_query($conexion,$db_Usuarios);
-    $registros = mysqli_query($conexion,$pa_usuarios);
+    $registros = mysqli_query($conexion,$ver_Productos);
 
     //$datos=[];
     //Se recorre el resultado y se guarda en un array

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
+import { ProductoService } from 'src/app/Servicios/Productos/producto.service';
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -8,11 +11,36 @@ import Swal from 'sweetalert2';
 })
 export class ProductoListaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private servicioProducto: ProductoService) { }
 
+  productos = null;
+
+  producto = {
+    ID_P: null,
+    NOM_P: null,
+    PRECIO: null,
+    DESCRIPCION: null,
+    TIPO_P: null,
+    CANTIDAD_E: null,
+    FOTO_P: null,
+    PAIS: null,
+    FECHA_CP: null,
+    base64textString: null
+  };
 
   ngOnInit() {
-    
+    this.obtenerProductos();    
+  }
+
+
+
+  obtenerProductos(){
+    this.servicioProducto.obtenerProductos().subscribe(
+      result => this.productos = result
+    );
+    console.log(this.producto);
+    console.log(this.productos);
+
   }
 
   compraR() {
@@ -79,5 +107,11 @@ export class ProductoListaComponent implements OnInit {
     })
   }
 
-
+  hayRegistros() {
+    if (this.producto == null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }

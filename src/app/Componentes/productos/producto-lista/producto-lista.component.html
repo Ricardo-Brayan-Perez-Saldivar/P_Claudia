@@ -1,19 +1,33 @@
 <h1>Lista de Artesanías !</h1>
 <hr><br>
 
-    <div class="Etiqueta">
-        <tr>
-            <div class="card" style="width: 18rem;">
-                <img src="./assets/Image/KuroNeko.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">nombre</h5>
-                  <p class="card-text">Precio: $15, Cantidad: 2 <br> Descripcion: prueba html</p>
-                  <a class="btn btn-primary">Comprar</a>
-                  <a class="btn btn-secondary" (click)="compraR()">Agregar al carrito</a>
+<div class="row row-cols-1 row-cols-md-3" *ngIf="hayRegistros(); else sin">
+   
+    <div class="col-4" *ngFor="let producto of productos" enctype="multipart/form-data">
+        <div class="card" border="1">
+            <br>
+            <img src="{{producto.FOTO_P}}" class="card-img-top" alt="Imagen no encontrada" width="200" height="250">
+            <div class="card-body">
+                <h5>{{producto.NOM_P}}</h5>
+                <p >Precio: $ {{producto.PRECIO}}</p>
+                <p >Cantidad: {{producto.CANTIDAD_E}}</p>
+                <p >Cantidad: {{producto.DESCRIPCION}}</p>
+                <div class="form-group">
+                    <a href="#" class="btn btn-success btn-block">GUARDAR</a>
+                    <a href="#" class="btn btn-primary btn-block">VER</a>
                 </div>
-              </div>
-        </tr>
+            </div>
+        </div>
+        <br>
     </div>
+</div>
+
+
+<ng-template #sin>
+    <p>No hay ningun usuario registrado.</p>
+</ng-template>
+
+
 
 <br><br><br>
 

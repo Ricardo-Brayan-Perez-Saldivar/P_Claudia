@@ -10,105 +10,127 @@ import { UsuariosService } from '../../../Servicios/Usuarios/usuarios.service';
 })
 export class RegistrateComponent implements OnInit {
 
-  usuarios = null;
+  //usuarios = null;
 
   usuario = {
-    ID_U: null,
+    //variables usuario
+    EMAIL: null,
+    CONTRASENA: null,
     NOM_U: null,
     AP_P: null,
     AP_M: null,
-    EDAD: null,
     SEXO: null,
+    EDAD: null,
     FOTO: null,
     SOBRENOMBRE: null,
-    EMAIL: null,
-    CONTRASENA: null,
-    ID_CALLE1: null,
-    ID_COL1: null,
-    ID_DM1: null,
-    ID_PA1: null};
+    base64textString: null,
+  };
 
+  domicilio = {
+    //variables domicilio
+    ID_U2: null,
+    CALLE: null,
+    N_EXT: null,
+    N_INT: null,
+    COLONIA: null,
+    CIUDAD: null,
+    CP: null,
+    PAIS: null
+  }
   constructor(private servicioUsuario: UsuariosService) { }
 
   ngOnInit() {
-    this.obtenerUsuario();    
-    
+    console.log(this.usuario);
+    //this.obtenerUsuario();
+    //this.resetear();
   }
 
-  resetear(){
-    this.usuario = {
-      ID_U: '',
-      NOM_U: '',
-      AP_P: '',
-      AP_M: '',
-      EDAD: '',
-      SEXO: '',
-      FOTO: '',
-      SOBRENOMBRE: '',
-      EMAIL: '',
-      CONTRASENA: '',
-      ID_CALLE1: '',
-      ID_COL1: '',
-      ID_DM1: '',
-      ID_PA1: ''};
-  }
+   /*
+    obtenerUsuario() {
+      this.servicioUsuario.obtenerUsuarios().subscribe(
+        result => this.usuarios = result
+      );
+  
+      console.log(this.usuarios);
+      console.log(this.usuario);
+    }*/
 
-  obtenerUsuario() {
-    this.servicioUsuario.obtenerUsuarios().subscribe( 
-      result => this.usuarios = result 
+    nuevoU(){
+      this.servicioUsuario.altaUsuario(this.usuario).subscribe(
+        datos => {
+          if(datos['resultado'] == 'OK'){
+            alert(datos['mensaje']);
+            console.log(this.usuario);
+          }
+        }
+      );
+      console.log(this.usuario);
+
+      this.servicioUsuario.altaDomicilio(this.domicilio).subscribe(
+        datos => {
+          if(datos['resultado'] == 'OK'){
+            alert(datos['mensaje']);
+          }
+        }
       );
 
-    console.log(this.usuarios);
-    console.log(this.usuario);
-  }
-
-  altaUsuario() {
-    this.servicioUsuario.altaUsuario(this.usuario).subscribe(
-      datos => {
-        if(datos['resultado'] == 'OK') {
-          alert(datos['mensaje']);
-          this.obtenerUsuario();
-          this.resetear();
-        }
-      }
-    );
-    
-  }
+    }
   
-  bajaUsuario(ID_U){
-    this.servicioUsuario.BajaUsuario(ID_U).subscribe(
-      datos => {
-        if(datos['resultado'] == 'OK'){
-          alert(datos['mensaje']);
-          this.obtenerUsuario();
-        }
+    seleccionarArchivo(event) {
+      var files = event.target.files;
+      var file = files[0];
+      this.usuario.FOTO = file.name;
+  
+      if (files && file) {
+        var reader = new FileReader();
+        reader.onload = this._handleReaderLoaded.bind(this);
+        reader.readAsBinaryString(file);
       }
-    );
-  }
-
-  editarUsuario(){
-    this.servicioUsuario.EditaUsuario(this.usuario).subscribe(
-      datos => {
-        if(datos['resultado']=='OK'){
-          alert(datos['mensaje']);
-          this.obtenerUsuario();
+    }
+  
+    _handleReaderLoaded(readerEvent) {
+      var binaryString = readerEvent.target.result;
+      this.usuario.base64textString = btoa(binaryString);
+    }
+    
+  /*
+    bajaUsuario(ID_U) {
+      this.servicioUsuario.BajaUsuario(ID_U).subscribe(
+        datos => {
+          if (datos['resultado'] == 'OK') {
+            alert(datos['mensaje']);
+            this.obtenerUsuario();
+            this.resetear();
+          }
         }
-      }
-    );
-  }
+      );
+    }
+  
+    editarUsuario() {
+      this.servicioUsuario.EditaUsuario(this.usuario).subscribe(
+        datos => {
+          if (datos['resultado'] == 'OK') {
+            alert(datos['mensaje']);
+            this.obtenerUsuario();
+            this.resetear();
+          }
+        }
+      );
+    }
+  
+    seleccionarUsuario(ID_U) {
+      this.servicioUsuario.seleccionUsuario(ID_U).subscribe(
+        result => this.usuario = result[0]
+      );
+    }*/
 
-  seleccionarUsuario(ID_U){
-    this.servicioUsuario.seleccionUsuario(ID_U).subscribe(
-      result => this.usuario = result[0]
-    );
-  }
-
-  hayRegistros(){
-    if(this.usuarios == null){
+  /*hayRegistros() {
+    if (this.usuarios == null) {
       return false;
-    }else {
+    } else {
       return true;
     }
-  }
+  }*/
+
 
 }
