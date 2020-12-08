@@ -1,17 +1,18 @@
 <h1>Lista de Artesanías !</h1>
 <hr><br>
 
-<div class="row row-cols-1 row-cols-md-3" *ngIf="hayRegistros(); else sin">
+<div class="row row-cols-2 row-cols-md-3" *ngIf="hayRegistros(); else sin">
    
-    <div class="col-4" *ngFor="let producto of productos" enctype="multipart/form-data">
+    <div class="col-2" *ngFor="let producto of productos" enctype="multipart/form-data">
         <div class="card" border="1">
             <br>
-            <img src="{{producto.FOTO_P}}" class="card-img-top" alt="Imagen no encontrada" width="200" height="250">
+            <div class="card-body">
+                <img src="{{producto.FOTO_P}}" class="card-img-top" alt="Imagen no encontrada" width="200" height="250">
+            </div>
             <div class="card-body">
                 <h5>{{producto.NOM_P}}</h5>
-                <p >Precio: $ {{producto.PRECIO}}</p>
+                <p >Precio: ${{producto.PRECIO}}</p>
                 <p >Cantidad: {{producto.CANTIDAD_E}}</p>
-                <p >Cantidad: {{producto.DESCRIPCION}}</p>
                 <div class="form-group">
                     <a href="#" class="btn btn-success btn-block">GUARDAR</a>
                     <a href="#" class="btn btn-primary btn-block">VER</a>
@@ -31,6 +32,6 @@
 
 <br><br><br>
 
-<button class="btn btn-success btn-lg Boton" (click)="alerta()">
+<!--<button class="btn btn-success btn-lg Boton" (click)="alerta()">
     <i class="fas fa-plus-circle"></i> Boton Prueba N
-</button>
+</button>-->

@@ -23,13 +23,10 @@
     //Movimiento de imagena la carpeta
     file_put_contents($filePath, $archivo);
     
-    $FECHA = "2020-02-10";
-
     //Operacion de insercion de producto
     
     $pa_ING_PRODUCTO = "CALL ING_PRODUCTO('$params->NOM_P', $params->PRECIO, '$params->DESCRIPCION',
-                        '$params->TIPO_P', $params->CANTIDAD_E, '$path', '$params->PAIS',
-                        '$FECHA->FECHA_CP')";
+                        '$params->TIPO_P', $params->CANTIDAD_E, '$path', '$params->PAIS')";
 
     //Se realizara la QUERY a la base de datos
     mysqli_query($conexion,$pa_ING_PRODUCTO);

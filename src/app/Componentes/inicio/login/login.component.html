@@ -5,16 +5,16 @@
                 <h1 class="text-center">INICIA SESION</h1>
                 <form >
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" >
+                        <label >Email</label>
+                        <input type="text" class="form-control" name="EMAIL" #EMAIL="ngModel" [(ngModel)]="login.EMAIL" >
                     </div>
 
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" >
+                        <label >Password</label>
+                        <input type="text" class="form-control" name="CONTRASENA" #CONTRASENA="ngModel" [(ngModel)]="login.CONTRASENA" >
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">INICIA SESION</button>
+                    <button class="btn btn-primary btn-lg btn-block" (click)="LoginUsuario()">INICIA SESION</button>
                 </form>
                 <div class="form-group mt-3">
                     <p>No tienes una cuenta, <a routerLink="/Registrate">Registrate</a></p>

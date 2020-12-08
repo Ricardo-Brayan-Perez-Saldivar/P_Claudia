@@ -21,6 +21,10 @@ export class UsuariosService {
   altaDomicilio(domicilio){
     return this.http.post(`${this.URL}AltaDomicilio.php`, JSON.stringify(domicilio));
   }
+
+  loginUsuario(login){
+    return this.http.post(`${this.URL}Login.php`, JSON.stringify(login));
+  }
 /*
   BajaUsuario(ID_U: number){
     return this.http.get(`${this.URL}BajaUsuario.php?ID_U=${ID_U}`);

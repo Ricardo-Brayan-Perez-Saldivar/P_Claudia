@@ -16,18 +16,18 @@
     EDAD, SEXO, FOTO, SOBRENOMBRE, EMAIL,CONTRASENA,
      ID_CALLE1, ID_COL1, ID_DM1, ID_PA1 
      FROM USUARIO";*/
-     //$db_Usuarios= "SELECT * FROM USUARIO";
-     $ver_Productos = "CALL VER_PRODUCTOS()";
+     $db_Usuarios= "SELECT NOM_P, PRECIO, CANTIDAD_E, FOTO_P FROM PRODUCTO WHERE PAIS ='E.E.U.U'";
+     //$ver_Productos = "CALL VER_PRODUCTOS()";
 
     //Realiza la query a la DB
     //$registros = mysqli_query($conexion,$db_Usuarios);
-    $registros = mysqli_query($conexion,$ver_Productos);
+    $registros = mysqli_query($conexion,$db_Usuarios);
 
     //$datos=[];
     //Se recorre el resultado y se guarda en un array
     while($resultado = mysqli_fetch_array($registros)){
         $datos[] = $resultado;
-    }
+    } 
 
     $json = json_encode($datos); //Genera el archivo JSON con los datos obtenidos
 

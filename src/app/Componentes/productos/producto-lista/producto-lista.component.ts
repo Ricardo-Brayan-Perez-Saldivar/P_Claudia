@@ -24,15 +24,12 @@ export class ProductoListaComponent implements OnInit {
     CANTIDAD_E: null,
     FOTO_P: null,
     PAIS: null,
-    FECHA_CP: null,
     base64textString: null
   };
 
   ngOnInit() {
     this.obtenerProductos();    
   }
-
-
 
   obtenerProductos(){
     this.servicioProducto.obtenerProductos().subscribe(
