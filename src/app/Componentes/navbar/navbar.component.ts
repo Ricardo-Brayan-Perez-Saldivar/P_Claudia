@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuariosService } from 'src/app/Servicios/Usuarios/usuarios.service';
 import Swal from 'sweetalert2';
 //import Swal from 'sweetalert2';
 
@@ -10,14 +11,18 @@ import Swal from 'sweetalert2';
 export class NavbarComponent implements OnInit {
   logo = 'assets/Image/KuroNeko.png';
 
-  constructor() { }
+  constructor(public UsuarioCervice: UsuariosService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
-  datos= "hola";
+  salirU(){
+    this.UsuarioCervice.datosUsuario[0] = '';
+    this.UsuarioCervice.datosUsuario[1] = '';
+  }
 
-  Carrito(datos){
+    Carrito(){
+    const datos="hola que tal prueba uno";
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -29,7 +34,7 @@ export class NavbarComponent implements OnInit {
     swalWithBootstrapButtons.fire({
       position: 'top-end',
       title: 'Carrito de Compra',
-      text: `${{datos}}`,
+      text: `${datos}`,
       icon: 'info',
       showCancelButton: true,
       confirmButtonText: 'Comprar',

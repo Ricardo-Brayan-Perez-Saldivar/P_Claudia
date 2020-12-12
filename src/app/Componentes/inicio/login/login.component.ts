@@ -1,6 +1,7 @@
 import { Component, OnInit, ɵConsole } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { UsuariosService } from 'src/app/Servicios/Usuarios/usuarios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +10,19 @@ import { UsuariosService } from 'src/app/Servicios/Usuarios/usuarios.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginUs;
+  loginUs=null;
+
+  loginU = { 
+    ID_U:null, 
+    SOBRENOMBRE:null
+  }
 
   login = {
     EMAIL: null,
     CONTRASENA: null
   };
 
-  constructor(private UsuarioCervice: UsuariosService) { }
+  constructor(private UsuarioCervice: UsuariosService) {}
 
    redirecciona = "http://localhost:4200/LProducto";
 
@@ -25,17 +31,39 @@ export class LoginComponent implements OnInit {
   }
 
   LoginUsuario() {
+    
     this.UsuarioCervice.loginUsuario(this.login).subscribe(
       datos =>{
         if(datos['resultado'] == 'OK'){
-          alert(datos['mensaje']);
-          window.location.href = this.redirecciona; //Redirecciona a la galeria de productos
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `${datos['mensaje']}`,
+            showConfirmButton: false,
+            timer: 1500
+          })
+          //alert(datos['mensaje']);
+         // window.location.href = this.redirecciona; //Redirecciona a la galeria de productos
         }else{
-          alert(datos['mensaje']);
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `${datos['mensaje']}`,
+            showConfirmButton: false,
+            timer: 1500
+          })
+          //alert(datos['mensaje']);
           console.log(datos);
         }
       }
     );
+
+    this.UsuarioCervice.ObtenerLogin(this.login).subscribe(
+      result => this.loginUs = result
+    );
+
+    this.UsuarioCervice.datosUsuario[0]='2';
+    this.UsuarioCervice.datosUsuario[1]='ROCKO';
     console.log(this.login);
   }
 

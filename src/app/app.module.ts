@@ -49,7 +49,8 @@ import { AppRoutingModule } from '../app/app-routing.module';
   ],
   providers: [
     ProductoService,
-    UsuariosService
+    UsuariosService,
+    LoginComponent
   ],
   bootstrap: [AppComponent]
 })

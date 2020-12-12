@@ -11,25 +11,22 @@
 
     $conexion = conexion();  //Crear la conexion
 
-    //Operacion de login
-    $registros = "CALL LOGIN('$params->EMAIL','$params->CONTRASENA')";
-    //$resultado = "SELECT * FROM USUARIO WHERE EMAIL='$params->EMAIL' AND CONTRASENA = '$params->CONTRASENA'";
-   
+    $cantidad = "1";
+    //Operacion a realizar
+    $pa_Carrito = "CALL ING_CARRITO($params->ID_U1,$params->ID_P1,$cantidad)";
     //Se realizara la QUERY a la base de datos
-    $resul = mysqli_query($conexion,$registros);
+    mysqli_query($conexion,$pa_Carrito);
 
     class Result{}
 
     //Se generan los datos de respuesta
     $response = new Result();
-    if($resul->num_rows > 0){
-        $response->resultado = 'OK';
-        $response->mensaje = 'LOGIN EXITOSO';
-    }else{
-        $response->resultado = 'FAIL';
-        $response->mensaje = 'LOGIN FALLIDO :(';
-    }
-    
-    echo json_encode($response);  //Muestra el JSON que se genero
+    $response->resultado = 'OK';
+    $response->mensaje = 'PRODUCTO GUARDADO EN CARRITO EXITOSAMENTE';
+
     header('Content-Type: application/json');
+
+    echo json_encode($response);  //Muestra el JSON que se genero
+
+
 ?>

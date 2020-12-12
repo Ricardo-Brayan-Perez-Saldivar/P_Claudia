@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 import { ProductoService } from '../../../Servicios/Productos/producto.service';
 
@@ -30,7 +31,14 @@ export class ProductoComponent implements OnInit {
     this.servicioProducto.altaProducto(this.producto).subscribe(
       datos => {
         if(datos['resultado'] == 'OK'){
-          alert(datos['mensaje']);
+          //alert(datos['mensaje']);
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `${datos['mensaje']}`,
+            showConfirmButton: false,
+            timer: 1500
+          })
           console.log(this.producto);
         }
       }

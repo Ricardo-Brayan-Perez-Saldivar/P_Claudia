@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';  //Permite comandos html
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProductoService {
 
   URL = "http://localhost/P_Claudia/src/app/API_CARRITO/"; //Variable mediante se realizara la conexion
@@ -17,6 +18,14 @@ export class ProductoService {
 
   altaProducto(producto){
     return this.http.post(`${this.URL}AltaProducto.php`, JSON.stringify(producto));
+  }
+
+  seleccionarProducto(ID_P: number){
+    return this.http.get(`${this.URL}seleccionarProducto.php?ID_P=${ID_P}`);
+  }
+
+  altaCarrito(carrito){
+    return this.http.post(`${this.URL}altaCarrito.php`, JSON.stringify(carrito));
   }
 
 }

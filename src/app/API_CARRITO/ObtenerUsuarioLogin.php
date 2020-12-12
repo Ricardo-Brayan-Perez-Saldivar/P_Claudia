@@ -12,16 +12,15 @@
     $conexion = conexion();  //Crear la conexion
 
     //Consulta a la base de datos
-    $db_Usuarios= "SELECT ID_P, NOM_P, PRECIO, CANTIDAD_E, FOTO_P FROM PRODUCTO WHERE PAIS ='México'";
-    //$db_Usuarios = "CALL VER_PRODUCTOS()";
-
-    //Realiza la query a la DB
-    //$registros = mysqli_query($conexion,$db_Usuarios);
-    $registros = mysqli_query($conexion,$db_Usuarios);
+    $registros = "CALL LOGIN('$params->EMAIL','$params->CONTRASENA')";
+    //$resultado = "SELECT * FROM USUARIO WHERE EMAIL='$params->EMAIL' AND CONTRASENA = '$params->CONTRASENA'";
+   
+    //Se realizara la QUERY a la base de datos
+    $resul = mysqli_query($conexion,$registros);
 
     //$datos=[];
     //Se recorre el resultado y se guarda en un array
-    while($resultado = mysqli_fetch_array($registros)){
+    while($resultado = mysqli_fetch_array($resul)){
         $datos[] = $resultado;
     } 
 

@@ -45,10 +45,12 @@
       <form class="form-inline my-9 my-lg-0">
 
         <li class="nav-item active">
-          <a class="nav-link" (click)="Carrito($event)">
+          <a class="nav-link" (click)="Carrito()">
             <i class="fas fa-cart-plus fa-2x"></i>Carrito
           </a>
         </li>
+        
+        <p>{{UsuarioCervice.datosUsuario[1]}}</p><!--muestra Sobrenombre-->
         <!--Registrate/Inicia-->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -56,19 +58,20 @@
             <i class="fas fa-user-circle fa-2x"></i>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink="/Login">REGISTRATE</a>
-            <a class="dropdown-item" routerLink="/Registrate">INICIAR SESION </a>
+            <a class="dropdown-item" routerLink="/Registrate">REGISTRATE</a>
+            <a class="dropdown-item" routerLink="/Login">INICIAR SESION </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Mis Artesanias</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/">
               <i class="fas fa-cogs"></i> CONFIGURACION</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/">
+            <a class="dropdown-item" (click)="salirU()" >
               <i class="fas fa-sign-out-alt"></i> SALIR</a>
           </div>
 
         </li>
+        
       </form>
     </ul>
 

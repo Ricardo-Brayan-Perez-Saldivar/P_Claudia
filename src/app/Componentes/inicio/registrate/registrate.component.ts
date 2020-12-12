@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 //Importacion del servicio
 import { UsuariosService } from '../../../Servicios/Usuarios/usuarios.service';
@@ -59,7 +60,14 @@ export class RegistrateComponent implements OnInit {
       this.servicioUsuario.altaUsuario(this.usuario).subscribe(
         datos => {
           if(datos['resultado'] == 'OK'){
-            alert(datos['mensaje']);
+            //alert(datos['mensaje']);
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: `${datos['mensaje']}`,
+              showConfirmButton: false,
+              timer: 1500
+            })
             console.log(this.usuario);
           }
         }

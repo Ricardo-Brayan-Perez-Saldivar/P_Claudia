@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ProductoService } from 'src/app/Servicios/Productos/producto.service';
+import { UsuariosService } from 'src/app/Servicios/Usuarios/usuarios.service';
 
 import Swal from 'sweetalert2';
 
@@ -11,10 +12,12 @@ import Swal from 'sweetalert2';
 })
 export class ProductoListaComponent implements OnInit {
 
-  constructor(private servicioProducto: ProductoService) { }
+  constructor(private servicioProducto: ProductoService, private UsuarioServicio: UsuariosService) { }
 
   productos = null;
 
+  ID_U: any = this.UsuarioServicio.datosUsuario[0];
+  
   producto = {
     ID_P: null,
     NOM_P: null,
@@ -27,16 +30,74 @@ export class ProductoListaComponent implements OnInit {
     base64textString: null
   };
 
-  ngOnInit() {
-    this.obtenerProductos();    
+  carrito = {
+    ID_U1: null,
+    ID_P1: null,
+    CANTIDAD: null
   }
 
-  obtenerProductos(){
+  ngOnInit() {
+    this.obtenerProductos();
+    //console.log(this.Carrito);
+  }
+
+  /*carritoP(){
+    this.carritoProducto();
+    this.Carrito();
+  }*/
+
+  carritoProducto(ID_P) {
+    //Optencion dedatos y guardado en carrito
+    //this.Carrito();
+    this.seleccionarProducto(ID_P);
+    this.seleccionarUsuario(this.ID_U);
+    console.log(this.carrito);
+    //if(this.carrito.ID_U1 != null && this.carrito.ID_P1 != null){
+    //this.Carrito();
+    //}
+    //this.Carrito();
+  }
+  /*Seleccion de ID`s para usuario y producto*/
+  seleccionarProducto(ID_P) {
+    this.servicioProducto.seleccionarProducto(ID_P).subscribe(
+      result => this.carrito.ID_P1 = result[0][0]
+    );
+    //console.log(this.carrito);
+  }
+
+  seleccionarUsuario(ID_U) {
+    this.UsuarioServicio.seleccionarUsuario(ID_U).subscribe(
+      result => this.carrito.ID_U1 = result[0][0]
+    );
+  }
+  /****************************************/
+
+  Carrito() {
+    this.servicioProducto.altaCarrito(this.carrito).subscribe(
+      datos => {
+        if (datos['resultado'] == 'OK') {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `${datos['mensaje']}`,
+            showConfirmButton: false,
+            timer: 1500
+          })
+          console.log(this.carrito);
+        }
+      }
+    );
+
+  }
+
+
+  /********Obtencion de los productos para visualizarlos************/
+  obtenerProductos() {
     this.servicioProducto.obtenerProductos().subscribe(
       result => this.productos = result
     );
-    console.log(this.producto);
-    console.log(this.productos);
+    /*console.log(this.producto);
+    console.log(this.productos);*/
 
   }
 
