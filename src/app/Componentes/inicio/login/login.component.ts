@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
       result => this.loginUs = result
     );
 
-    this.UsuarioCervice.datosUsuario[0]='2';
+    this.UsuarioCervice.datosUsuario[0]='1';
     this.UsuarioCervice.datosUsuario[1]='ROCKO';
     console.log(this.login);
   }

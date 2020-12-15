@@ -1,0 +1,12 @@
+.card-img-top{
+    margin-top: 05px;
+    /*margin-left: 05px;
+    margin-right: 05px;*/
+    margin-bottom: 05px;
+}
+
+.texto{
+    font: 150% Arial;
+    /*margin-left: 15px;*/
+    /*text-indent: -15px;*/
+}

@@ -26,6 +26,7 @@ import { UsuariosService } from './Servicios/Usuarios/usuarios.service';
 
 //Rutas a ocupar
 import { AppRoutingModule } from '../app/app-routing.module';
+import { CarritoComponent } from './Componentes/carrito/carrito.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AppRoutingModule } from '../app/app-routing.module';
     RegistrateComponent,
     PagosComponent,
     PoliticasComponent,
-    NavbarComponent
+    NavbarComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,

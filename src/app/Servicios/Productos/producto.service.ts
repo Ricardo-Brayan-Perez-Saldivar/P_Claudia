@@ -28,4 +28,8 @@ export class ProductoService {
     return this.http.post(`${this.URL}altaCarrito.php`, JSON.stringify(carrito));
   }
 
+  ObtenerCarrito(ID_U1: number){
+    return this.http.get(`${this.URL}ObtenerCarrito.php?ID_U1=${ID_U1}`);
+  }
+
 }

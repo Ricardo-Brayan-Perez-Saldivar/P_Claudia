@@ -38,7 +38,8 @@ export class ProductoListaComponent implements OnInit {
 
   ngOnInit() {
     this.obtenerProductos();
-    //console.log(this.Carrito);
+    console.log(this.producto);
+    console.log(this.productos);
   }
 
   /*carritoP(){
@@ -96,9 +97,6 @@ export class ProductoListaComponent implements OnInit {
     this.servicioProducto.obtenerProductos().subscribe(
       result => this.productos = result
     );
-    /*console.log(this.producto);
-    console.log(this.productos);*/
-
   }
 
   compraR() {
