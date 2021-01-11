@@ -17,6 +17,9 @@ export class ProductoListaComponent implements OnInit {
   productos = null;
 
   ID_U: any = this.UsuarioServicio.datosUsuario[0];
+
+  PAIS = "México";
+  TIPO_P = "A";
   
   producto = {
     ID_P: null,
@@ -37,9 +40,10 @@ export class ProductoListaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.obtenerProductos();
+    this.Pais();
     console.log(this.producto);
     console.log(this.productos);
+    //console.log(this.categoria);
   }
 
   /*carritoP(){
@@ -53,10 +57,6 @@ export class ProductoListaComponent implements OnInit {
     this.seleccionarProducto(ID_P);
     this.seleccionarUsuario(this.ID_U);
     console.log(this.carrito);
-    //if(this.carrito.ID_U1 != null && this.carrito.ID_P1 != null){
-    //this.Carrito();
-    //}
-    //this.Carrito();
   }
   /*Seleccion de ID`s para usuario y producto*/
   seleccionarProducto(ID_P) {
@@ -93,8 +93,15 @@ export class ProductoListaComponent implements OnInit {
 
 
   /********Obtencion de los productos para visualizarlos************/
-  obtenerProductos() {
-    this.servicioProducto.obtenerProductos().subscribe(
+  Pais(){
+    this.obtenerProductos(this.PAIS,this.TIPO_P);
+    console.log(this.PAIS);
+    console.log(this.TIPO_P);
+    console.log(this.productos);
+  }
+
+  obtenerProductos(PAIS,TIPO_P) {
+    this.servicioProducto.obtenerProductos(PAIS,TIPO_P).subscribe(
       result => this.productos = result
     );
   }

@@ -18,8 +18,16 @@ export class NavbarComponent implements OnInit {
   }
 
   salirU() {
-    this.UsuarioCervice.datosUsuario[0] = '';
+    this.UsuarioCervice.datosUsuario[0] = '0';
     this.UsuarioCervice.datosUsuario[1] = '';
+  }
+
+  hayCarrito(){
+    if(this.UsuarioCervice.datosUsuario[0] == '0'){
+      return false;
+    }else{
+      return true;
+    }
   }
 
   }

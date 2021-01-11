@@ -12,7 +12,7 @@
     $conexion = conexion();  //Crear la conexion
 
     //Consulta a la base de datos
-    $db_Usuarios= "SELECT ID_P, NOM_P, PRECIO, CANTIDAD_E, FOTO_P FROM PRODUCTO WHERE PAIS ='México'";
+    $db_Usuarios= "SELECT ID_P, NOM_P, PRECIO, CANTIDAD_E, FOTO_P FROM PRODUCTO WHERE PAIS = '$_GET[PAIS]' AND TIPO_P = '$_GET[TIPO_P]'";
     //$db_Usuarios = "CALL VER_PRODUCTOS()";
 
     //Realiza la query a la DB

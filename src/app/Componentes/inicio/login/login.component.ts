@@ -10,11 +10,11 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
-  loginUs=null;
+  loginUs = null;
 
-  loginU = { 
-    ID_U:null, 
-    SOBRENOMBRE:null
+  loginU = {
+    ID_U: null,
+    SOBRENOMBRE: null
   }
 
   login = {
@@ -22,19 +22,19 @@ export class LoginComponent implements OnInit {
     CONTRASENA: null
   };
 
-  constructor(private UsuarioCervice: UsuariosService) {}
+  constructor(private UsuarioCervice: UsuariosService) { }
 
-   redirecciona = "http://localhost:4200/LProducto";
+  redirecciona = "http://localhost:4200/LProducto";
 
 
   ngOnInit(): void {
   }
 
   LoginUsuario() {
-    
+
     this.UsuarioCervice.loginUsuario(this.login).subscribe(
-      datos =>{
-        if(datos['resultado'] == 'OK'){
+      datos => {
+        if (datos['resultado'] == 'OK') {
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -43,8 +43,8 @@ export class LoginComponent implements OnInit {
             timer: 1500
           })
           //alert(datos['mensaje']);
-         // window.location.href = this.redirecciona; //Redirecciona a la galeria de productos
-        }else{
+          // window.location.href = this.redirecciona; //Redirecciona a la galeria de productos
+        } else {
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -52,19 +52,27 @@ export class LoginComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500
           })
+          this.limpiar();
           //alert(datos['mensaje']);
           console.log(datos);
         }
       }
     );
 
-    this.UsuarioCervice.ObtenerLogin(this.login).subscribe(
-      result => this.loginUs = result
-    );
+    /*this.UsuarioCervice.ObtenerLogin(this.login).subscribe(
+      result => this.UsuarioCervice.datosUsuario = result[0]
+    );*/
 
-    this.UsuarioCervice.datosUsuario[0]='1';
-    this.UsuarioCervice.datosUsuario[1]='ROCKO';
-    console.log(this.login);
+    this.UsuarioCervice.datosUsuario[0] = '2';
+    this.UsuarioCervice.datosUsuario[1] = 'ROCKO';
+    console.log(this.UsuarioCervice.datosUsuario[0]);
+    /*console.log(this.loginU);*/
   }
 
+  limpiar() {
+    this.login.CONTRASENA = '';
+    this.login.EMAIL = '';
+  }
 }
+
+

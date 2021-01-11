@@ -12,8 +12,8 @@ export class ProductoService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerProductos(){
-    return this.http.get(`${this.URL}ObtenerProductos.php`);
+  obtenerProductos(PAIS,TIPO_P){
+    return this.http.get(`${this.URL}ObtenerProductos.php?PAIS=${PAIS}&TIPO_P=${TIPO_P}`);
   }
 
   altaProducto(producto){

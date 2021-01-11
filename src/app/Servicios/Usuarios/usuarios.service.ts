@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';  //Permite comandos html
 })
 export class UsuariosService {
 
-  datosUsuario: Array<any> = [2,'ADMIN'];
+  datosUsuario: Array<any> = ['1','ADMIN'];
 
   URL = "http://localhost/P_Claudia/src/app/API_CARRITO/"; //Variable mediante se realizara la conexion
   constructor(private http: HttpClient) { }

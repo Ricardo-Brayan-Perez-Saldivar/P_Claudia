@@ -5,18 +5,36 @@
 <hr><br>
 
 
+<!---->
+<select class="form-select-pais" aria-label="Default select example" [(ngModel)]="PAIS">
+    <option selected>Selecciona el pais</option>
+    <option value="México">México</option>
+    <option value="E.E.U.U">E.E.U.U</option>
+    <option value="China">China</option>
+    <option value="Japon">Japon</option>
+    <option value="Rusia">Rusia</option>
+</select>
+<!---->
 
-<div class="row row-cols-2 row-cols-md-3" *ngIf="hayRegistros(); else sin">
+<select class="form-select-tipo" aria-label="Default select example" [(ngModel)]="TIPO_P">
+    <option selected>Selecciona tipo de articulo</option>
+    <option value="A">Artesania</option>
+    <option value="M">Manualidad</option>
+</select>
 
-    <div class="col-2" *ngFor="let producto of productos" enctype="multipart/form-data">
+<button class="btn-ref btn-success" (click)="Pais()">Refrescar</button>
+
+<div class="row row-cols-0 row-cols-md-3" *ngIf="hayRegistros(); else sin">
+
+    <div class="col-1" *ngFor="let producto of productos" enctype="multipart/form-data">
         <div class="card" border="1">
             <br>
             <div class="card-body">
                 <img src="{{producto.FOTO_P}}" class="card-img-top" alt="Imagen no encontrada" width="200" height="250">
             </div>
             <div class="card-body">
-                <h5>{{producto.NOM_P}}</h5>
                 <input type="hidden" [(ngModel)]="producto.ID_P">
+                <h5>{{producto.NOM_P}}</h5>
                 <p>Precio: ${{producto.PRECIO}}</p>
                 <p>Existencia: {{producto.CANTIDAD_E}}</p>
                 <div class="form-group">

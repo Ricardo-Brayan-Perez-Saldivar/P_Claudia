@@ -25,17 +25,16 @@ export class CarritoComponent implements OnInit {
   constructor(public UsuarioCervice: UsuariosService, public ProductoServicio: ProductoService) { }
 
   ngOnInit() {
+    this.Carrito();
   }
 
   Carrito() {
-
     this.ObtenerCarrito(this.ID_U1);
     //console.log(this.carrito);
     console.log(this.CarritoV);
+    console.log(this.UsuarioCervice.datosUsuario[0]);
   }
     /************************************/
-
-
     ObtenerCarrito(ID_U1) {
       this.ProductoServicio.ObtenerCarrito(ID_U1).subscribe(
         result => this.CarritoV = result

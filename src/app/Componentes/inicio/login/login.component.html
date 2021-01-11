@@ -11,7 +11,7 @@
 
                     <div class="form-group">
                         <label >Password</label>
-                        <input type="text" class="form-control" name="CONTRASENA" #CONTRASENA="ngModel" [(ngModel)]="login.CONTRASENA" >
+                        <input type="password" class="form-control" name="CONTRASENA" #CONTRASENA="ngModel" [(ngModel)]="login.CONTRASENA" >
                     </div>
 
                     <button class="btn btn-primary btn-lg btn-block" (click)="LoginUsuario()">INICIA SESION</button>
@@ -23,7 +23,4 @@
         </div>
     </div>
 </div>
-<!--<div *ngFor="let loginU of loginUs">
-    <p>{{loginU.ID_U}}</p>
-    <p>{{loginU.SOBRENOMBRE}}</p>
-</div>-->
+
