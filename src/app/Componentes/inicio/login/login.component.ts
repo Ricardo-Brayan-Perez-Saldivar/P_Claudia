@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private UsuarioCervice: UsuariosService) { }
 
-  redirecciona = "http://localhost:4200/LProducto";
+  redirecciona = "http://localhost:4200/inicioP";
 
 
   ngOnInit(): void {
@@ -43,7 +43,12 @@ export class LoginComponent implements OnInit {
             timer: 1500
           })
           //alert(datos['mensaje']);
-          // window.location.href = this.redirecciona; //Redirecciona a la galeria de productos
+           window.location.href = this.redirecciona; //Redirecciona a la galeria de productos
+           this.UsuarioCervice.datosUsuario[0] = '2';
+           this.UsuarioCervice.datosUsuario[1] = 'ROCKO';
+           console.log(this.UsuarioCervice.datosUsuario[0]);
+           this.limpiar();
+           /*console.log(this.loginU);*/
         } else {
           Swal.fire({
             position: 'top-end',
@@ -62,11 +67,6 @@ export class LoginComponent implements OnInit {
     /*this.UsuarioCervice.ObtenerLogin(this.login).subscribe(
       result => this.UsuarioCervice.datosUsuario = result[0]
     );*/
-
-    this.UsuarioCervice.datosUsuario[0] = '2';
-    this.UsuarioCervice.datosUsuario[1] = 'ROCKO';
-    console.log(this.UsuarioCervice.datosUsuario[0]);
-    /*console.log(this.loginU);*/
   }
 
   limpiar() {

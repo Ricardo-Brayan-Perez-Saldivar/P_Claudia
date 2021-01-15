@@ -72,108 +72,64 @@
 </div>
 -->
 
-    <div class="card">
-        <div class="card-body">
-                <h1>Datos personales:</h1>
-                <div class="form-row">
+<div class="card">
+    <div class="card-body">
+        <h1>Datos personales:</h1>
+        <div class="form-row">
 
-                    <div class="col-md-4 mb-3">
-                        <label >Nombre(s):</label>
-                        <input type="text" class="form-control" name="NOM_U" #NOM_U="ngModel" [(ngModel)]="usuario.NOM_U" >
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label >Apellido paterno:</label>
-                        <input type="text" class="form-control" name="AP_P" #AP_P="ngModel" [(ngModel)]="usuario.AP_P" >
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label >Apellido Materno:</label>
-                        <input type="text" class="form-control" name="AP_M" #AP_M="ngModel" [(ngModel)]="usuario.AP_M">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="col-md-4 mb-3">
-                        <label>Email:</label>
-                        <input type="text" class="form-control" name="EMAIL" #EMAIL="ngModel" [(ngModel)]="usuario.EMAIL" >
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label>Contraseña:</label>
-                        <input type="text" class="form-control" name="CONTRASENA" #CONTRASENA="ngModel" [(ngModel)]="usuario.CONTRASENA" >
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label>Sobrenombre:</label>
-                        <input type="text" class="form-control" name="SOBRENOMBRE" #SOBRENOMBRE="ngModel" [(ngModel)]="usuario.SOBRENOMBRE">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="col-md-2 mb-3">
-                        <label>Edad:</label>
-                        <input type="number" class="form-control" name="EDAD" #EDAD="ngModel" [(ngModel)]="usuario.EDAD">
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label>sexo:</label>
-                        <select class="custom-select" name="SEXO" #SEXO="ngModel" [(ngModel)]="usuario.SEXO">
-                            <option selected disabled value="">Selecciona...</option>
-                            <option value="H">Hombre</option>
-                            <option value="M">Mujer</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label>Selecciona una imagen</label>
-                        <input type="file" class="form-control-file" accept="image/*" (change)="seleccionarArchivo($event)">
-                    </div>
-                </div>
-            
-                <hr>
-                <!--<h1>Domicilio:</h1>
-
-                <input type="text" name="ID_U2" #ID_U2="ngModel" [(ngModel)]="domicilio.ID_U2">
-
-                <div class="form-row">
-                    <div class="col-md-8 mb-3">
-                        <label >Calle:</label>
-                        <input type="text" class="form-control"  name="CALLE" #CALLE="ngModel" [(ngModel)]="domicilio.CALLE">
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <label >Nº INTERNO (Mz):</label>
-                        <input type="number" class="form-control" name="N_INT" #N_INT="ngModel" [(ngModel)]="domicilio.N_INT">
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <label >Nº EXTERNO (Lt):</label>
-                        <input type="number" class="form-control" name="N_EXT" #N_EXT="ngModel" [(ngModel)]="domicilio.N_EXT">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="col-md-5 mb-3">
-                        <label >Colonia:</label>
-                        <input type="text" class="form-control" name="COLONIA" #COLONIA="ngModel" [(ngModel)]="domicilio.COLONIA">
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <label >Ciudad:</label>
-                        <input type="text" class="form-control" name="CIUDAD" #CIUDAD="ngModel" [(ngModel)]="domicilio.CIUDAD">
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <label >CP:</label>
-                        <input type="number" class="form-control" name="CP" #CP="ngModel" [(ngModel)]="domicilio.CP">
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <label >Pais:</label>
-                        <select class="custom-select" name="PAIS" #PAIS="ngModel" [(ngModel)]="domicilio.PAIS">
-                            <option selected disabled value="">Selecciona...</option>
-                            <option value="México">México</option>
-                            <option value="EU">E.U.</option>
-                            <option value="China">China</option>
-                            <option value="Japon">Japon</option>
-                            <option value="Rusia">Rusia</option>
-                        </select>
-                    </div>
-                </div>-->
-                    
-                <button class="btn btn-primary" (click)="nuevoU()" >GUARDAR USUARIO</button>
-            
+            <div class="col-md-4 mb-3">
+                <label>Nombre(s):</label>
+                <input type="text" class="form-control" name="NOM_U" #NOM_U="ngModel" [(ngModel)]="usuario.NOM_U">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Apellido paterno:</label>
+                <input type="text" class="form-control" name="AP_P" #AP_P="ngModel" [(ngModel)]="usuario.AP_P">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Apellido Materno:</label>
+                <input type="text" class="form-control" name="AP_M" #AP_M="ngModel" [(ngModel)]="usuario.AP_M">
+            </div>
         </div>
+
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label>Email:</label>
+                <input type="text" class="form-control" name="EMAIL" #EMAIL="ngModel" [(ngModel)]="usuario.EMAIL">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Contraseña:</label>
+                <input type="text" class="form-control" name="CONTRASENA" #CONTRASENA="ngModel"
+                    [(ngModel)]="usuario.CONTRASENA">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Sobrenombre:</label>
+                <input type="text" class="form-control" name="SOBRENOMBRE" #SOBRENOMBRE="ngModel"
+                    [(ngModel)]="usuario.SOBRENOMBRE">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-2 mb-3">
+                <label>Edad:</label>
+                <input type="number" class="form-control" name="EDAD" #EDAD="ngModel" [(ngModel)]="usuario.EDAD">
+            </div>
+            <div class="col-md-3 mb-3">
+                <label>sexo:</label>
+                <select class="custom-select" name="SEXO" #SEXO="ngModel" [(ngModel)]="usuario.SEXO">
+                    <option selected disabled value="">Selecciona...</option>
+                    <option value="H">Hombre</option>
+                    <option value="M">Mujer</option>
+                </select>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label>Selecciona una imagen</label>
+                <input type="file" class="form-control-file" accept="image/*" (change)="seleccionarArchivo($event)">
+            </div>
+        </div>
+        <hr>
+        <button class="btn btn-primary" (click)="nuevoU()">GUARDAR USUARIO</button>
+
     </div>
+</div>
 
 <hr><br>

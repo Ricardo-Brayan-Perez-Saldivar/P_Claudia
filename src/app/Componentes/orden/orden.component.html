@@ -1,0 +1,67 @@
+<div class="card">
+    <div class="card-body">
+        <h1>Domicilio:</h1>
+
+        <div class="form-row">
+            <div class="col-md-4">
+                <input type="hidden" name="ID_U2" #ID_U2="ngModel" [(ngModel)]="domicilio.ID_U2">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-8 mb-3">
+                <label>Calle:</label>
+                <input type="text" class="form-control" name="CALLE" #CALLE="ngModel" [(ngModel)]="domicilio.CALLE">
+            </div>
+            <div class="col-md-2 mb-3">
+                <label>(Mz):</label>
+                <input type="number" class="form-control" name="N_INT" #N_INT="ngModel" [(ngModel)]="domicilio.N_INT">
+            </div>
+            <div class="col-md-2 mb-3">
+                <label>(Lt):</label>
+                <input type="number" class="form-control" name="N_EXT" #N_EXT="ngModel" [(ngModel)]="domicilio.N_EXT">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-5 mb-3">
+                <label>Colonia:</label>
+                <input type="text" class="form-control" name="COLONIA" #COLONIA="ngModel"
+                    [(ngModel)]="domicilio.COLONIA">
+            </div>
+            <div class="col-md-2 mb-3">
+                <label>Ciudad:</label>
+                <input type="text" class="form-control" name="CIUDAD" #CIUDAD="ngModel" [(ngModel)]="domicilio.CIUDAD">
+            </div>
+            <div class="col-md-2 mb-3">
+                <label>CP:</label>
+                <input type="number" class="form-control" name="CP" #CP="ngModel" [(ngModel)]="domicilio.CP">
+            </div>
+            <div class="col-md-2 mb-3">
+                <label>Pais:</label>
+                <select class="custom-select" name="PAIS" #PAIS="ngModel" [(ngModel)]="domicilio.PAIS">
+                    <option selected disabled value="">Selecciona...</option>
+                    <option value="México">México</option>
+                    <option value="EU">E.U.</option>
+                    <option value="China">China</option>
+                    <option value="Japon">Japon</option>
+                    <option value="Rusia">Rusia</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="card">
+    <div class="card-body">
+        <label> Tipo de pago</label>
+        <select class="custom-select" name="PAIS" #PAIS="ngModel" [(ngModel)]="Pago.TP">
+            <option selected disabled value="">Selecciona...</option>
+            <option value="1">TARJETA DE CREDITO</option>
+            <option value="2">TARJETA DE DEBITO</option>
+            <option value="3">TRANSFERENCIA BANCARIA</option>
+            <option value="4">EFECTIVO</option>
+            <option value="5">PAYPAL</option>
+        </select>
+    </div>
+</div>

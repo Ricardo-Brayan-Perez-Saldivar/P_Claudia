@@ -27,17 +27,7 @@ export class RegistrateComponent implements OnInit {
     base64textString: null,
   };
 
-  domicilio = {
-    //variables domicilio
-    ID_U2: null,
-    CALLE: null,
-    N_EXT: null,
-    N_INT: null,
-    COLONIA: null,
-    CIUDAD: null,
-    CP: null,
-    PAIS: null
-  }
+  
   constructor(private servicioUsuario: UsuariosService) { }
 
   ngOnInit() {
@@ -74,13 +64,13 @@ export class RegistrateComponent implements OnInit {
       );
       console.log(this.usuario);
 
-      this.servicioUsuario.altaDomicilio(this.domicilio).subscribe(
+      /*this.servicioUsuario.altaDomicilio(this.domicilio).subscribe(
         datos => {
           if(datos['resultado'] == 'OK'){
             alert(datos['mensaje']);
           }
         }
-      );
+      );*/
 
     }
   

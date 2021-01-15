@@ -27,6 +27,7 @@ import { UsuariosService } from './Servicios/Usuarios/usuarios.service';
 //Rutas a ocupar
 import { AppRoutingModule } from '../app/app-routing.module';
 import { CarritoComponent } from './Componentes/carrito/carrito.component';
+import { OrdenComponent } from './Componentes/orden/orden.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CarritoComponent } from './Componentes/carrito/carrito.component';
     PagosComponent,
     PoliticasComponent,
     NavbarComponent,
-    CarritoComponent
+    CarritoComponent,
+    OrdenComponent
   ],
   imports: [
     BrowserModule,

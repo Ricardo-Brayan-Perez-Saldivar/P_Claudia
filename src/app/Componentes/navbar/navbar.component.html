@@ -13,8 +13,9 @@
 
       <!--Inicio-->
       <li class="nav-item active">
-        <a class="nav-link" href="#">Inicio </a>
+        <a class="nav-link" routerLink="/LProducto">Inicio </a>
       </li>
+
       <!--Aapartado de Productos-->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -42,6 +43,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="#" routerLink="/Pagos">Tipos de Pagos </a>
       </li>
+
       <!--Carrito        Para una prueba=--routerLink="/Carrito"-->
       <li class="nav-item active carrito">
         <a class="nav-link" data-toggle="modal" data-target="#modalCarrito" *ngIf="hayCarrito(); else sin">
@@ -58,7 +60,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item">
             <!--muestra Sobrenombre-->
-            <p class="navUsuario">{{UsuarioCervice.datosUsuario[0]}}</p>
+            <!--<p class="navUsuario">{{UsuarioCervice.datosUsuario[0]}}</p>-->
             <p class="navUsuario">{{UsuarioCervice.datosUsuario[1]}}</p>
           </a>
           <a class="dropdown-item" routerLink="/Registrate">REGISTRATE</a>
@@ -77,6 +79,7 @@
   </div>
 </nav>
 <hr>
+<!--Carrito-->
 <!--tabindex="-1" //Permite cerrar con la tecla escape-->
 <div class="container">
   <div class="modal fade" id="modalCarrito">
@@ -90,7 +93,8 @@
           <app-carrito></app-carrito>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-success">Comprar</button>
+          <button class="btn btn-success" type="button" data-dismiss="modal" data-toggle="modal"
+            data-target="#Pedido">Comprar</button>
           <button class="btn btn-danger" data-dismiss='modal'>Cerrar</button>
         </div>
       </div>
@@ -98,6 +102,428 @@
   </div>
 </div>
 
+<!--DIRECCION Y TIPO DE PAGO-->
+<div class="container">
+  <div class="modal fade" id="Pedido">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Completa los siguientes datos para la compra:</h3>
+          <button class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <!--Aqui empieza-->
+          <div class="card">
+            <div class="card-body">
+              <h1>Domicilio:</h1>
+
+              <div class="form-row">
+                <div class="col-md-4">
+                  <input type="hidden" name="ID_U2" #ID_U2="ngModel" [(ngModel)]="domicilio.ID_U2">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col-md-8 mb-3">
+                  <label>Calle:</label>
+                  <input type="text" class="form-control" name="CALLE" #CALLE="ngModel" [(ngModel)]="domicilio.CALLE">
+                </div>
+                <div class="col-md-2 mb-3">
+                  <label>(Mz):</label>
+                  <input type="number" class="form-control" name="N_INT" #N_INT="ngModel" [(ngModel)]="domicilio.N_INT">
+                </div>
+                <div class="col-md-2 mb-3">
+                  <label>(Lt):</label>
+                  <input type="number" class="form-control" name="N_EXT" #N_EXT="ngModel" [(ngModel)]="domicilio.N_EXT">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col-md-5 mb-3">
+                  <label>Colonia:</label>
+                  <input type="text" class="form-control" name="COLONIA" #COLONIA="ngModel"
+                    [(ngModel)]="domicilio.COLONIA">
+                </div>
+                <div class="col-md-2 mb-3">
+                  <label>Ciudad:</label>
+                  <input type="text" class="form-control" name="CIUDAD" #CIUDAD="ngModel"
+                    [(ngModel)]="domicilio.CIUDAD">
+                </div>
+                <div class="col-md-2 mb-3">
+                  <label>CP:</label>
+                  <input type="number" class="form-control" name="CP" #CP="ngModel" [(ngModel)]="domicilio.CP">
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label>Pais:</label>
+                  <select class="custom-select" name="PAIS" #PAIS="ngModel" [(ngModel)]="domicilio.PAIS">
+                    <option selected disabled value="">Selecciona...</option>
+                    <option value="México">México</option>
+                    <option value="EU">E.U.</option>
+                    <option value="China">China</option>
+                    <option value="Japon">Japon</option>
+                    <option value="Rusia">Rusia</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="card">
+            <div class="card-body">
+              <label> Tipo de pago</label>
+              <select class="custom-select" name="PAIS" #PAIS="ngModel" [(ngModel)]="Pago.TP">
+                <option selected disabled value="">Selecciona...</option>
+                <option value="1">TARJETA DE CREDITO</option>
+                <option value="2">TARJETA DE DEBITO</option>
+                <option value="3">TRANSFERENCIA BANCARIA</option>
+                <option value="4">EFECTIVO</option>
+                <option value="5">PAYPAL</option>
+              </select>
+            </div>
+          </div>
+          <!--Aqui acaba-->
+        </div>
+        <div class="modal-footer">
+          <!--<button class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#final">Siguiente</button>-->
+          <div [ngSwitch]="Pago.TP">
+            <div *ngSwitchCase="1"><button class="btn btn-success" type="button" data-dismiss="modal"
+                data-toggle="modal" data-target="#TC">Siguiente</button></div>
+            <div *ngSwitchCase="2"><button class="btn btn-success" type="button" data-dismiss="modal"
+                data-toggle="modal" data-target="#TD">Siguiente</button></div>
+            <div *ngSwitchCase="3"><button class="btn btn-success" type="button" data-dismiss="modal"
+                data-toggle="modal" data-target="#TB">Siguiente</button></div>
+            <div *ngSwitchCase="4"><button class="btn btn-success" type="button" data-dismiss="modal"
+                data-toggle="modal" data-target="#EF">Siguiente</button></div>
+            <div *ngSwitchCase="5"><button class="btn btn-success" type="button" data-dismiss="modal"
+                data-toggle="modal" data-target="#PA">Siguiente</button></div>
+
+            <div *ngSwitchDefault></div>
+          </div>
+          <button class="btn btn-danger" data-dismiss='modal' (click)="cero()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Tarjeta cedito-->
+<div class="container">
+  <div class="modal fade" id="TC">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Datos de tarjeta de Cedito</h1>
+          <button class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+
+          <div class="card">
+            <div class="card-body">
+              <h3>Ingresa los datos de tu tarjeta</h3>
+              <hr>
+
+              <div class="form-row">
+                <label> Numero de tarjeta:</label>
+                <div class="col-md-8 mb-3">
+                  <input type="number" class="form-control" placeholder="Ingresa 16 digitos de tu tarjeta">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label>Fecha de vencimiento:</label>
+                <div class="col-md-3 mb-3">
+                  <select class="form-control">
+                    <option selected disabled>mes</option>
+                    <option>Enero</option>
+                    <option>Febrero</option>
+                    <option>Marzo</option>
+                    <option>Abril</option>
+                    <option>Mayo</option>
+                    <option>Junio</option>
+                    <option>Julio</option>
+                    <option>Agosto</option>
+                    <option>Septiembre</option>
+                    <option>Octubre</option>
+                    <option>Noviembre</option>
+                    <option>Diciembre</option>
+                  </select>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                  <input type="number" class="form-control" placeholder="año">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label>Codigo de seguridad:</label>
+                <div class="col-md-3 mb-3">
+                  <input type="number" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label>Titular de la tarjeta:</label>
+                <div class="col-md-8 mb-3">
+                  <input type="text" class="form-control" placeholder=" Nombres y apellidos">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="button" data-dismiss="modal" data-toggle="modal"
+            data-target="#Pedido">Regresar</button>
+          <button class="btn btn-success" type="button" data-dismiss="modal" data-toggle="modal"
+            (click)="Fin()">Finalizar</button>
+          <button class="btn btn-danger" data-dismiss='modal'>Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Tarjeta debito-->
+<div class="container">
+  <div class="modal fade" id="TD">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Datos de tarjeta de Debito</h1>
+          <button class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="card">
+            <div class="card-body">
+              <h3>Ingresa los datos de tu tarjeta</h3>
+              <hr>
+
+              <div class="form-row">
+                <label> Numero de tarjeta:</label>
+                <div class="col-md-8 mb-3">
+                  <input type="number" class="form-control" placeholder="Ingresa 16 digitos de tu tarjeta">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label>Fecha de vencimiento:</label>
+                <div class="col-md-3 mb-3">
+                  <select class="form-control">
+                    <option selected disabled>mes</option>
+                    <option>Enero</option>
+                    <option>Febrero</option>
+                    <option>Marzo</option>
+                    <option>Abril</option>
+                    <option>Mayo</option>
+                    <option>Junio</option>
+                    <option>Julio</option>
+                    <option>Agosto</option>
+                    <option>Septiembre</option>
+                    <option>Octubre</option>
+                    <option>Noviembre</option>
+                    <option>Diciembre</option>
+                  </select>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                  <input type="number" class="form-control" placeholder="año">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label>Codigo de seguridad:</label>
+                <div class="col-md-3 mb-3">
+                  <input type="number" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label>Titular de la tarjeta:</label>
+                <div class="col-md-8 mb-3">
+                  <input type="text" class="form-control" placeholder=" Nombres y apellidos">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="button" data-dismiss="modal" data-toggle="modal"
+            data-target="#Pedido">Regresar</button>
+          <button class="btn btn-success" type="button" data-dismiss="modal" data-toggle="modal"
+          (click)="Fin()">Finalizar</button>
+          <button class="btn btn-danger" data-dismiss='modal'>Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Transferencia Bancaria-->
+<div class="container">
+  <div class="modal fade" id="TB">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Datos para la Transferencia Bancaria</h1>
+          <button class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="card">
+            <div class="card-body">
+              <div class="text-center">
+                <h6>Ingresa toda la información de manera oficial y correcta</h6>
+              </div>
+              <hr>
+
+              <div class="form-row">
+                <label>Beneficiario:</label>
+                <div class="col-md-8 mb-4">
+                  <input type="text" class="form-control" placeholder="Nombre o Identificador">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label>Direccion del Beneficiario:</label>
+                <div class="col-md-12 mb-4">
+                  <input type="text" class="form-control" placeholder="Dirección Completa">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label>Tipo de Cuenta:</label>
+                <div class="col-md-9 mb-4">
+                  <select class="custom-select form-control">
+                    <option selected disabled>Selecciona...</option>
+                    <option>Ahorros</option>
+                    <option>Normal</option>
+                    <option>Platino</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label>Numero de Cuenta o IBAN:</label>
+                <div class="col-md-6 mb-3">
+                  <input type="number" class="form-control" >
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label>Razon de envio:</label>
+                <div class="col-md-8 mb-3">
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="button" data-dismiss="modal" data-toggle="modal"
+            data-target="#Pedido">Regresar</button>
+          <button class="btn btn-success" type="button" data-dismiss="modal" data-toggle="modal"
+          (click)="Fin()">Finalizar</button>
+          <button class="btn btn-danger" data-dismiss='modal'>Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Efectivo-->
+<div class="container">
+  <div class="modal fade" id="EF">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Datos para pagar en efectivo</h1>
+          <button class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="card">
+            <div class="card-body">
+              <div>
+                <h6>Ocupe sta referencia para pagar en la tienda de su confianza.</h6>
+              </div>
+
+              <div class="form-row">
+                <div class="col-md-9 mb-3">
+                  <img [src]="pago" alt="Imagen no encontrada">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="button" data-dismiss="modal" data-toggle="modal"
+            data-target="#Pedido">Regresar</button>
+          <button class="btn btn-success" type="button" data-dismiss="modal" data-toggle="modal"
+          (click)="Fin()">Finalizar</button>
+          <button class="btn btn-danger" data-dismiss='modal'>Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--PayPal-->
+<div class="container">
+  <div class="modal fade" id="PA">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Datos para PayPal</h1>
+          <button class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="card">
+            <div class="card-body">
+              <div class="form-row">
+                <div>
+                  <img [src]="Paypal" alt="Imaen no encontrada" width="400" height="250">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label>Usuario:</label>
+                <div class="col-md-12 mb-2">
+                  <input type="text" class="form-control" placeholder="Ingresa tu nickname o correo">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label>Password:</label>
+                <div class="col-md-12 mb-2">
+                  <input type="password" class="form-control" placeholder="Ingresa tu contraseña">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="button" data-dismiss="modal" data-toggle="modal"
+            data-target="#Pedido">Regresar</button>
+          <button class="btn btn-success" type="button" data-dismiss="modal" data-toggle="modal"
+          (click)="Fin()">Finalizar</button>
+          <button class="btn btn-danger" data-dismiss='modal'>Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Template en caso de que no este logeado alguien-->
 <ng-template #sin>
   <p>Sin usuario.</p>
 </ng-template>

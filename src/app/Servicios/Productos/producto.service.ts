@@ -32,4 +32,8 @@ export class ProductoService {
     return this.http.get(`${this.URL}ObtenerCarrito.php?ID_U1=${ID_U1}`);
   }
 
+  BajaCarrito(ID_C: number){
+    return this.http.get(`${this.URL}BajaProductoC.php?ID_C=${ID_C}`);
+  }
+
 }

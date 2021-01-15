@@ -8,11 +8,13 @@ import { LoginComponent } from './Componentes/Inicio/login/login.component';
 import { PagosComponent } from './Componentes/Inicio/pagos/pagos.component';
 import { PoliticasComponent } from './Componentes/Inicio/politicas/politicas.component';
 import { RegistrateComponent } from './Componentes/Inicio/registrate/registrate.component';
+import { OrdenComponent } from './Componentes/orden/orden.component';
 import { ProductoListaComponent } from './Componentes/Productos/producto-lista/producto-lista.component';
 import { ProductoComponent } from './Componentes/Productos/producto/producto.component';
 
 const routes: Routes = [
-    {path:'',component:InicioComponent,pathMatch:'full'},
+    {path:'',component:ProductoListaComponent,pathMatch:'full'},
+    {path: 'InicioP', component: InicioComponent},
     {path: 'NProducto', component:ProductoComponent},
     {path: 'LProducto', component: ProductoListaComponent},
     {path: 'Contactanos', component: ContactanosComponent},
@@ -20,7 +22,8 @@ const routes: Routes = [
     {path: 'Pagos', component: PagosComponent},
     {path: 'Login', component: LoginComponent},
     {path: 'Registrate', component: RegistrateComponent},
-    {path: 'Carrito', component: CarritoComponent}
+    {path: 'Carrito', component: CarritoComponent},
+    {path: 'OrdenC', component: OrdenComponent}
 
 ];
 

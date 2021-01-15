@@ -31,8 +31,8 @@ export class CarritoComponent implements OnInit {
   Carrito() {
     this.ObtenerCarrito(this.ID_U1);
     //console.log(this.carrito);
-    console.log(this.CarritoV);
-    console.log(this.UsuarioCervice.datosUsuario[0]);
+    //console.log(this.CarritoV);
+    //console.log(this.UsuarioCervice.datosUsuario[0]);
   }
     /************************************/
     ObtenerCarrito(ID_U1) {
@@ -40,5 +40,18 @@ export class CarritoComponent implements OnInit {
         result => this.CarritoV = result
       );
     }
+
+    EliminarCarrito(ID_C){
+      this.ProductoServicio.BajaCarrito(ID_C).subscribe(
+        datos => {
+          if(datos['resultado'] == 'OK'){
+            alert(datos['mensaje']);
+            this.Carrito();
+          }
+        }
+      );
+
+    }
+
 
 }
